@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
-
+import wheel
+import setuptools
 from distutils.core import setup, Extension
 from distutils.sysconfig import get_config_vars
 import os
