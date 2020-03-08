@@ -120,11 +120,14 @@ if '--bjam' in sys.argv:
         # add extra quoting around the path to prevent bjam from parsing it as a list
         # if the path has spaces
         os.environ['LIBTORRENT_PYTHON_INTERPRETER'] = '"' + sys.executable + '"'
+        cxxflags = os.environ.get('CXXFLAGS')
 
         # build libtorrent using bjam and build the installer with distutils
         cmdline = ('b2 libtorrent-link=static boost-link=static release '
                    'optimization=space stage_module --abbreviate-paths' +
                    address_model + toolset + parallel_builds)
+        if cxxflags:
+            cmdline += f' cxxflags="{cxxflags}" '
         print(cmdline)
         if os.system(cmdline) != 0:
             print('build failed')
