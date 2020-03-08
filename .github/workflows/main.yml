@@ -6,8 +6,5 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v1
-            - run: python3.7 -m pip install wheel
-            - run: sudo apt install -y --no-install-recommends libboost1.65-all-dev python3.7-dev build-essential
-            - run: sudo rm -rf /usr/local/share/boost
-            - run: b2 -j8
-            - run: python3.7 setup.py --bjam bdist_wheel
+            - run: sudo docker build -t lbry/libtorrent-builder:latest -f build.Dockerfile .
+            - run: sudo docker run -v "$(pwd)":/app -i -t=false lbry/libtorrent-builder:latest bash -c "cd /app && python3.7 setup.py --bjam bdist_wheel"
