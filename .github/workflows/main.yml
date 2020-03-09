@@ -2,10 +2,15 @@ name: ci
 on: push
 jobs:
     ubuntu-latest:
-        name: Ubuntu "latest" - boost 1.65
+        name: Build wheel
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v1
             - run: sudo docker build -t lbry/libtorrent-builder:latest -f build.Dockerfile .
             - run: sudo docker run -v "$(pwd)":/app -i -t=false lbry/libtorrent-builder:latest bash -c "cd /app && python3.7 setup.py --bjam bdist_wheel"
             - run: sudo ldd bindings/python/*.so
+            - name: Upload artifact
+              uses: actions/upload-artifact@v1
+              with:
+                  name: python_libtorrent-1.2.4-py3-none-any.whl
+                  path: bindings/python/dist/python_libtorrent-1.2.4-py3-none-any.whl
