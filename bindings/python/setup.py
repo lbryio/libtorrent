@@ -185,13 +185,13 @@ else:
     ]
 
 setup(
-    name='python-libtorrent',
+    name='lbry-libtorrent',
     version='1.2.4',
     author='Arvid Norberg',
     author_email='arvid@libtorrent.org',
-    description='Python bindings for libtorrent-rasterbar',
-    long_description='Python bindings for libtorrent-rasterbar',
-    url='http://libtorrent.org',
+    description='Python bindings for libtorrent-rasterbar (lbry fork for packaging)',
+    long_description='Python bindings for libtorrent-rasterbar (lbry fork for packaging)',
+    url='https://github.com/lbryio/libtorrent/',
     platforms=[platform.system() + '-' + platform.machine()],
     license='BSD',
     packages=packages,

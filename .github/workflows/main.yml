@@ -12,5 +12,5 @@ jobs:
             - name: Upload artifact
               uses: actions/upload-artifact@v1
               with:
-                  name: python_libtorrent-1.2.4-py3-none-any.whl
-                  path: bindings/python/dist/python_libtorrent-1.2.4-py3-none-any.whl
+                  name: lbry_libtorrent-1.2.4-py3-none-any.whl
+                  path: bindings/python/dist/lbry_libtorrent-1.2.4-py3-none-any.whl
